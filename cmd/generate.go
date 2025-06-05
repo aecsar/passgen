@@ -80,9 +80,15 @@ Examples:
 			)
 		}
 
+		var allContent string
+
 		for _, pswd := range passwords {
+			allContent += pswd + "\n"
+
 			fmt.Println(pswd)
 		}
+
+		internal.WriteToClipboard(allContent)
 	},
 }
 
