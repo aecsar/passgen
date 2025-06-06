@@ -6,29 +6,31 @@ type RandomPassOpts struct {
 	ExcludeNumbers, ExcludeLowercase, ExcludeUppercase, ExcludeSpecialChars bool
 }
 
-func GenerateRandomStringBytes(n int, options RandomPassOpts) string {
+const (
+	NumberBytes      = "0123456789"
+	LowerCaseBytes   = "abcdefghijklmnopqrstuvwxyz"
+	UpperCaseBytes   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	SpecialCharBytes = "!@#$%^&*()_+-=[]{}\\|;':\",./<>?~`"
+)
 
-	numberBytes := "0123456789"
-	lowerCaseBytes := "abcdefghijklmnopqrstuvwxyz"
-	upperCaseBytes := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	specialCharBytes := "!@#$%^&*()_+-=[]{}\\|;':\",./<>?~`"
+func GenerateRandomStringBytes(n int, options RandomPassOpts) string {
 
 	finalBytes := []byte{}
 
 	if !options.ExcludeNumbers {
-		finalBytes = append(finalBytes, ([]byte)(numberBytes)...)
+		finalBytes = append(finalBytes, ([]byte)(NumberBytes)...)
 	}
 
 	if !options.ExcludeLowercase {
-		finalBytes = append(finalBytes, ([]byte)(lowerCaseBytes)...)
+		finalBytes = append(finalBytes, ([]byte)(LowerCaseBytes)...)
 	}
 
 	if !options.ExcludeUppercase {
-		finalBytes = append(finalBytes, ([]byte)(upperCaseBytes)...)
+		finalBytes = append(finalBytes, ([]byte)(UpperCaseBytes)...)
 	}
 
 	if !options.ExcludeSpecialChars {
-		finalBytes = append(finalBytes, ([]byte)(specialCharBytes)...)
+		finalBytes = append(finalBytes, ([]byte)(SpecialCharBytes)...)
 	}
 
 	b := make([]byte, n)
