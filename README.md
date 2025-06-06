@@ -1,5 +1,7 @@
 # PassGen
 
+![passgen](./images/passgen.jpg)
+
 A fast, secure CLI tool for generating cryptographically strong random passwords with customizable character sets.
 
 ## Features
